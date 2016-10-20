@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		
+	<link href="https://fonts.googleapis.com/css?family=Antic+Didone|Arapey|Josefin+Sans" 
+	rel="stylesheet">
+		
+		<script type="text/javascript" src=d3.miin.js></script>
+		<title>Nitrogen Conundrum</title>
+	</head>
+
+
+<style>
+
+  #container {
+    width: 960px;
+    fill: #4b5b4a;
+   
+  }
+  
+  #containerpic {
+	  width: 200px;
+	  height: 500px;
+	  margin-left: 500px;
+	  margin-top: -400px;
+	}
+
+  #column {
+    width: 478px;
+    display: inline-block;
+    margin-left: 15px;
+  }
+  
+  #caption1 {
+    width: 250px;
+  }
+  
+  #caption2 {
+    width: 250px;
+  }
+  
+  #caption3 {
+    width: 250px;
+  }
+ 
+  #shape {
+    width: 500px;
+    height: 125px;
+    background-color:#4b5b4a;
+    margin: 20px;
+    margin-top: 20px;
+  }
+	#chart {
+		width: 100px;
+		height:   800px;
+		margin-left: 70px;
+		margin-top: -70px;
+	}
+ 
+	path {
+  		stroke-width: 2;
+  		fill: none;
+	}
+
+   .text{
+      font-family: Josefin Sans;
+      font-size: 1em;
+      color: #4f361a;
+      line-height: 1.3em;
+      letter-spacing: 0;
+      text-align: left;
+      text-indent: 0;
+      width: 974px;
+      margin-left: 20px;
+    }
+    
+  .ylabel{
+    font-family: Josefin Sans;
+    font-size: .75em;
+    color: #ff971a;
+    line-height: 1.3em;
+    letter-spacing: 0;
+    text-align: left;
+    text-indent: 0;
+    width: 50px;
+    height: 40px;
+    margin-left: 20px;
+    margin-top: 30px;
+  }
+  
+  .y2label{
+    font-family: Josefin Sans;
+    font-size: .75em;
+    color: #3e6549;
+    line-height: 1.3em;
+    letter-spacing: 0;
+    text-align: left;
+    text-indent: 0px;
+    width: 50px;
+    height: 40px;
+    margin-left: 670px;
+    margin-top: -50px;
+  }
+    
+  .title {
+    font-family: Antic Didone;
+    font-size: 4em;
+    color: #ff971a;
+    letter-spacing: 0;
+    word-spacing: 0;
+    text-align: left;
+    height: 40px;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+  
+  .subtitle {
+    font-family: Antic Didone;
+    font-size: 1.5em;
+    color: #ff971a;
+    letter-spacing: 0;
+    word-spacing: 0;
+    text-align: left;
+    height: 30px;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+  
+	.axis_t path,
+	.axis_t line {
+		fill: none;
+		stroke: #4f361a;
+		stroke-width: 0.5;
+	}
+
+	.axis_t text {
+  		font: 10px Josefin Sans;
+  		fill: #4f361a;
+	}
+ 
+	.axis_n path,
+	.axis_n line {
+		fill: none;
+		stroke: #ff971a;
+		stroke-width: 0;
+	}
+
+	.axis_n text {
+  		font: 10px Josefin Sans;
+  		fill: #ff971a;
+	}
+
+	.axis_c path,
+	.axis_c line {
+		fill: none;
+		stroke: #3e6549;
+		stroke-width: 0;
+	}
+
+	.axis_c text {
+  		font: 10px Josefin Sans;
+  		fill: #3e6549;
+	}
+	
+	.tooltip {
+  		position: relative;
+  		width: 100px;
+  		height: 28px;
+  		font-family: Josefin Sans;
+  		text-align: center;
+  		color: white;
+  		pointer-events: none;
+	}
+
+	.circle {
+		  fill: #60231b;
+   		stroke: #60231b;
+   		stroke-width: 2;
+   		-webkit-transition: 0.5s;
+	}
+
+	.circle:hover {
+		r: 20px;
+		fill: #60231b;
+   		-webkit-transition: r 0.5s;
+	}
+ 
+</style>
+  
+<body>
+<div id="shape">
+ 
+ <div id="containter">
+    <div class="column">
+      <h1 class="title">Nitrogen</h>
+    </div>
+    
+    <div class="column">
+      <h4 class="subtitle">Feeding the World or Destroying it?</h4>
+    </div>
+  </div>
+  </div>
+  
+    <div class="cloumn">
+      <p class="text">Nitrogen is a plant limiting factor. While nitrogen (N) is abundant in the air, the atom is only utilized by plants, and therefore life, in a specific and limited form found in the soil.  For plants, the more usable nitrogen it has access to, the better the plant grows. In terms of agriculture, the more nitrogen a crop has access to, the more food is produced. Prior to the discovery of synthetically produce nitrogen, </p>
+    </div>
+
+
+  <div id"container1">
+    <div class="column">
+      <p class ="ylabel">Synthetic N applied (per 1000 lbs)</p>
+      </div>
+      </div>
+  
+  <div id"container2">    
+    <div class="column">  
+      <p class ="y2label">Crop productivity (bushels / acre)</p>
+    </div> 
+   </div>
+   
+    <div id="chart"></div>
+    
+  <div id"containerpic">
+    <div class"column"
+      <img id="caption1" src="desktop/caption1.jpg" />
+    </div>
+    
+    <div class"column"
+      <img id="caption2" src="desktop/caption2.jpg" />
+    </div>
+    
+    <div class"column"
+      <img id="caption3" src="desktop/caption3.jpg" />
+    </div>
+    
+  </div>
+ 
+	  
+</body>
+ 
+<script>
+
+	d3.csv("data/n_data.csv", function(error, data) {
+
+  var markers = ["one","two","three"];
+  
+	var parseDate = d3.time.format("%Y").parse;
+
+	data.forEach(function(d) {
+		d.date = parseDate(d.date);
+		d.n = +d.n;
+		d.crop = +d.crop;
+		d.select = +d.select;
+	});
+
+	var padding = {top: 30, right: 60, bottom: 30, left: 60};
+	var w = 600 - padding.left - padding.right;
+	var h = 270 - padding.top - padding.bottom;
+
+	var xScale = d3.time.scale()
+		.domain(d3.extent(data, function(d) { return d.date; }))
+		.range([0, w]);
+
+	var yScale = d3.scale.linear()
+		.domain([0, d3.max(data, function(d) { return d.n; })])
+		.range([h, 0]);
+
+	var cyScale = d3.scale.linear()
+		.domain([0, d3.max(data, function(d) { return d.crop; })])
+		.range([h, 0]);
+
+
+	var svg = d3.select("#chart")
+	    .append("svg")
+		.attr("width", w + padding.left + padding.right)
+		.attr("height", h + padding.top + padding.bottom)
+	    .append("g")
+		.attr("transform", "translate(" + padding.left + "," + padding.top + ")");
+
+	var nline = d3.svg.line()
+	    .x(function(d) { return xScale(d.date); })
+	    .y(function(d) { return yScale(+d.n); });
+
+	svg.append("path")	
+		.attr("stroke", "#ff971a")
+		.attr("d", nline(data));
+
+	var cline = d3.svg.line()
+		  .defined(function(d) { return d.crop != ''; })
+	    .x(function(d) { return xScale(d.date); })
+	    .y(function(d) { return cyScale(+d.crop); });
+
+	svg.append("path")
+		.attr("stroke", "#4b5b4a")
+		.attr("d", cline(data));
+
+
+// Setting the Axes
+var xAxis = d3.svg.axis()
+    .scale(xScale)
+    .orient("bottom")
+    .ticks(5);
+
+svg.append("g").call(xAxis)	
+	.attr("class", "x axis_t")
+	.attr("transform", "translate(0," + h + ")");
+
+var yAxis = d3.svg.axis()
+    .scale(yScale)
+	.orient("left")
+    .ticks(5);
+
+svg.append("g").call(yAxis)	
+	.attr("class", "y axis_n");
+
+
+var cyAxis = d3.svg.axis()
+    .scale(cyScale)
+	.orient("right")
+    .ticks(5);
+
+svg.append("g").call(cyAxis)
+	.attr("transform", "translate(" + (w) + ",0)")
+	.attr("class", "y axis_c");
+
+
+
+
+//------------------------------------//
+// Start of Interactive D3 Components
+
+
+		var tooltip = d3.select("#chart").append("div")
+   			.attr("class", "tooltip")
+    		.style("opacity", 0);
+
+		svg.selectAll("dots")
+			.data(data)
+			.enter()
+			.append("circle")
+			.filter(function(d) {
+				return d.select == 1
+			})
+			.attr("id", function(d,i) {return markers[i];})
+			.attr("cx", function(d) {
+				return xScale(d.date); 
+			})
+			.attr("cy", function(d) {
+				return yScale(d.n); 
+			})
+			.attr("class","circle")
+			.attr("cx", function(d) {
+				return xScale(d.date);
+			})
+			.attr("cy", function(d) {
+				return yScale(d.n);
+			})
+			.attr("r", function(d) {
+				return 5;
+			})
+			.on("mouseover", function(d) {
+
+				this.parentNode.appendChild(this);
+
+          		tooltip.transition()
+                .duration(200)
+                .style("opacity", 1);
+          		
+          		tooltip.html("trend: " + d.n + "<br> Hillary <br> Clinton")
+          		.style("left", xScale(d.date) + -15 + "px")
+                .style("top", yScale(d.n) + "px");
+
+      		})
+      		.on("mouseout", function(d) {
+          		tooltip.transition()
+               .duration(500)
+               .style("opacity", 0);
+      		});
+
+// End of Interactive D3 Components
+//---------------------------------//
+
+
+  document.getElementById("one").onmouseover = function() { 
+      document.getEementById("c1").style.opacity=1;
+  }
+  
+  document.getElementById("one").onmouseleave = function() { 
+      document.getEementById("c1").style.opacity=0;
+  }
+
+
+}); // end of d3 code
+
+
+ 
+</script>
+</html>
